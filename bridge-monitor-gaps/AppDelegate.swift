@@ -18,11 +18,11 @@ enum Direction {
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
+    var screensCheckTimer: Timer!
+    
     var local: Any?
     var global: Any?
-    
-    var screensCheckTimer: Timer!
-    var mouseMovingCheckTimer: Timer!
+    var mouseMovingCheckTimer: Timer?
     var mousePositionCheckTimer: Timer?
     
     var lastMousePosition = NSEvent.mouseLocation
@@ -31,54 +31,67 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var zones: [(Direction, CGFloat, CGFloat, CGFloat, CGFloat, CGFloat)]!
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Populate the jump zones for the current screen layout
+        // Populate the jump zones for the screen layout at start
         checkZones()
-        
         // Check every once in a while if the screens have changed positions
         screensCheckTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true, block: checkZones)
-        
-        // We need to fall back to polling when events are not fired (when launchpad, mission control, etc is pulled up)
-        // This only checks if polling should be enabled. If it is, polling is enabled in the passed function.
-        mouseMovingCheckTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: checkMouseIsMoving)
         
         // Remove the pause when warping the mouse position
         CGEventSource(stateID: CGEventSourceStateID.combinedSessionState)?.localEventsSuppressionInterval = 0;
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
-        stopListener()
+        stopListeners()
         screensCheckTimer.invalidate()
-        mouseMovingCheckTimer.invalidate()
-        mousePositionCheckTimer?.invalidate()
     }
     
-    func listener(_ event: NSEvent) {
+    func eventHandler(_ event: NSEvent) {
         parseMousePosition(event.locationInWindow)
     }
     
     func startListener() {
         let events: NSEvent.EventTypeMask = [.mouseMoved, .leftMouseDragged, .rightMouseDragged, .otherMouseDragged]
         
-        local = NSEvent.addLocalMonitorForEvents(matching: events) { event in
-            self.listener(event)
-            
-            return event
+        if local == nil {
+            // Receive local events for mouse movement
+            local = NSEvent.addLocalMonitorForEvents(matching: events) { event in
+                self.eventHandler(event)
+                
+                return event
+            }
         }
         
-        global = NSEvent.addGlobalMonitorForEvents(matching: events, handler: listener)
+        if global == nil {
+            // Receive global events for mouse movement
+            global = NSEvent.addGlobalMonitorForEvents(matching: events, handler: eventHandler)
+        }
+        
+        if mouseMovingCheckTimer == nil {
+            // We need to fall back to polling when events are not fired (when launchpad, mission control, etc is pulled up)
+            // This only checks if polling should be enabled. If it is, polling is enabled in the passed function.
+            mouseMovingCheckTimer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true, block: checkMouseIsMoving)
+        }
     }
     
-    func stopListener() {
+    func stopListeners() {
         if local != nil {
             NSEvent.removeMonitor(local!)
-            
             local = nil
         }
         
         if global != nil {
             NSEvent.removeMonitor(global!)
-            
             global = nil
+        }
+        
+        if mouseMovingCheckTimer != nil {
+            mouseMovingCheckTimer!.invalidate()
+            mouseMovingCheckTimer = nil
+        }
+        
+        if mousePositionCheckTimer != nil {
+            mousePositionCheckTimer!.invalidate()
+            mousePositionCheckTimer = nil
         }
     }
     
@@ -319,14 +332,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }
         }
         
-        if zones.count > 0 {
-            if local == nil {
-                startListener()
-            }
+        if !zones.isEmpty  {
+            startListener()
         } else {
-            if local != nil {
-                stopListener()
-            }
+            stopListeners()
         }
     }
     
