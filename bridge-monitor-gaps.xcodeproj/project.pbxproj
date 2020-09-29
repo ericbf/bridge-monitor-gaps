@@ -7,20 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0718FB6F2523764900A55EDA /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0718FB6E2523764900A55EDA /* main.swift */; };
 		07BE9C6E246F4A02007FD933 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BE9C6D246F4A02007FD933 /* AppDelegate.swift */; };
-		07BE9C70246F4A02007FD933 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BE9C6F246F4A02007FD933 /* ContentView.swift */; };
-		07BE9C72246F4A03007FD933 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07BE9C71246F4A03007FD933 /* Assets.xcassets */; };
-		07BE9C75246F4A03007FD933 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07BE9C74246F4A03007FD933 /* Preview Assets.xcassets */; };
-		07BE9C78246F4A03007FD933 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07BE9C76246F4A03007FD933 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0718FB6E2523764900A55EDA /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		07BE9C6A246F4A02007FD933 /* bridge-monitor-gaps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "bridge-monitor-gaps.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		07BE9C6D246F4A02007FD933 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		07BE9C6F246F4A02007FD933 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		07BE9C71246F4A03007FD933 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		07BE9C74246F4A03007FD933 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		07BE9C77246F4A03007FD933 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		07BE9C79246F4A03007FD933 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07BE9C7A246F4A03007FD933 /* bridge_monitor_gaps.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = bridge_monitor_gaps.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -56,22 +50,11 @@
 			isa = PBXGroup;
 			children = (
 				07BE9C6D246F4A02007FD933 /* AppDelegate.swift */,
-				07BE9C6F246F4A02007FD933 /* ContentView.swift */,
-				07BE9C71246F4A03007FD933 /* Assets.xcassets */,
-				07BE9C76246F4A03007FD933 /* Main.storyboard */,
 				07BE9C79246F4A03007FD933 /* Info.plist */,
 				07BE9C7A246F4A03007FD933 /* bridge_monitor_gaps.entitlements */,
-				07BE9C73246F4A03007FD933 /* Preview Content */,
+				0718FB6E2523764900A55EDA /* main.swift */,
 			);
 			path = "bridge-monitor-gaps";
-			sourceTree = "<group>";
-		};
-		07BE9C73246F4A03007FD933 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				07BE9C74246F4A03007FD933 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -101,7 +84,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1140;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = ferreira.life;
 				TargetAttributes = {
 					07BE9C69246F4A02007FD933 = {
@@ -132,9 +115,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07BE9C78246F4A03007FD933 /* Main.storyboard in Resources */,
-				07BE9C75246F4A03007FD933 /* Preview Assets.xcassets in Resources */,
-				07BE9C72246F4A03007FD933 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,23 +125,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07BE9C70246F4A02007FD933 /* ContentView.swift in Sources */,
+				0718FB6F2523764900A55EDA /* main.swift in Sources */,
 				07BE9C6E246F4A02007FD933 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		07BE9C76246F4A03007FD933 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				07BE9C77246F4A03007FD933 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		07BE9C7B246F4A03007FD933 /* Debug */ = {
@@ -190,6 +159,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -250,6 +220,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -280,15 +251,12 @@
 		07BE9C7E246F4A03007FD933 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "bridge-monitor-gaps/bridge_monitor_gaps.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"bridge-monitor-gaps/Preview Content\"";
 				DEVELOPMENT_TEAM = U6BN3M2E92;
 				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "bridge-monitor-gaps/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -304,15 +272,12 @@
 		07BE9C7F246F4A03007FD933 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "bridge-monitor-gaps/bridge_monitor_gaps.entitlements";
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_ASSET_PATHS = "\"bridge-monitor-gaps/Preview Content\"";
 				DEVELOPMENT_TEAM = U6BN3M2E92;
 				ENABLE_HARDENED_RUNTIME = YES;
-				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "bridge-monitor-gaps/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

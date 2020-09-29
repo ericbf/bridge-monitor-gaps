@@ -16,7 +16,6 @@ enum Direction {
     case verticalGap
 }
 
-@NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     var screensCheckTimer: Timer!
     
@@ -33,6 +32,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Populate the jump zones for the screen layout at start
         checkZones()
+
         // Check every once in a while if the screens have changed positions
         screensCheckTimer = Timer.scheduledTimer(withTimeInterval: 3, repeats: true, block: checkZones)
         
@@ -41,8 +41,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
-        stopListeners()
         screensCheckTimer.invalidate()
+        stopListeners()
     }
     
     func eventHandler(_ event: NSEvent) {
